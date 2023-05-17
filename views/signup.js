@@ -12,7 +12,8 @@ async function postsignup(e){
         const response=await axios.post('http://localhost:3000/postsignup',{"name":name,"email":email,"password":password,"phone":phone});
         if(response.status===200)
         {
-console.log('user added')
+            location.href = './loginPage.html?message=User added successfully!';
+
         }
         
         else{
