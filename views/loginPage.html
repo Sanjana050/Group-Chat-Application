@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        body{
+            background: url('https://img.freepik.com/premium-photo/grunge-background_196038-9966.jpg?size=626&ext=jpg&ga=GA1.1.1554987159.1680416334&semt=ais');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-attachment:fixed;
+    
+            background-size: cover;
+
+            
+        }
+        .form-control{
+         display: flex;
+         flex-direction: column;
+         margin:12rem 29rem;
+        }
+        .form-content{
+            margin:23px;
+            padding:1rem;
+            
+        }
+       #name, #password,#phone,#email{
+            border-radius: .5rem;
+            padding:.2rem;
+            background: transparent;
+            border:1px solid white;
+            width:23rem;
+
+            
+        }
+        .btn{
+            margin-top:2rem;
+            width:10rem;
+            height:2rem;
+            background-color: black;
+            color:white;
+            border-radius: .5rem;
+            padding:.5rem;
+            position:relative;
+            margin-top:2rem;
+            margin-left:7rem;
+            cursor:pointer;
+        }
+        header{
+            background-color: rgb(12, 12, 12);
+            margin: -8px;
+        padding:5px;
+        position:sticky;
+        
+
+
+            
+        }
+        .premium-form{
+            margin:0;
+            height:15vh;
+            padding:2px;
+
+            text-align: center;
+            margin-right: 30px;;
+            
+            
+            
+            
+
+        }
+        header p{
+            display:flex;
+            justify-content: center;;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .premium{
+            background-color: transparent;
+            border:none;
+
+            width:255px;
+            font-size:15px;
+        font-weight:bold;
+            
+            font-family:Georgia, 'Times New Roman', Times, serif
+        }
+        .newuser{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            margin-left:2px;
+        }
+.newsignup{
+    background: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+border-radius:.2rem;
+display: flex;
+width:4rem;
+height:30px;
+margin-top:1rem;
+margin-left:5px;
+font-size: 15px;
+text-decoration: none;
+
+text-align: center;
+cursor: pointer;
+}
+
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<header>
+<p style="color:white">Group Chat Application</p>
+
+</header>
+<div class="newuser">
+    <p>new user</p>
+    <a href="signup.html"><button type="submit" class="newsignup" style="text-decoration: none;">Signup</button></a>
+</div>
+<body>
+   <form class="form-control">
+
+    
+    <div class="from-content">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+</div>
+
+<div class="from-content">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required>
+</div>
+
+
+
+
+<button  class="btn" type="submit" id="signupbtn">Login</button>
+   <div id="error-message" style="color:red"></div>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="login.js"></script>
+</body>
+</html>
