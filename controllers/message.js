@@ -20,8 +20,9 @@ const chatCreate=await Chat.create({
 if(chatCreate)
 {
     console.log(req.body.message)
+    console.log(chatCreate.id,'this is id from chat db')
     console.log('NEHAA')
-    res.status(200).json({message:"chat printed on the screen ",user:req.user})
+    res.status(200).json({message:"chat printed on the screen ",user:req.user,messageId:chatCreate.id})
 }
 else{
     res.status(300).json({message:"chat could not be printed",success:false})

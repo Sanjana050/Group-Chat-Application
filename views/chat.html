@@ -164,6 +164,16 @@ cursor: pointer;
     justify-content: center;
 
 }
+#users{
+    
+  overflow: auto;
+  max-height: 400px; /* example maximum height */
+
+}
+.container{
+    height: 500px;
+  overflow: hidden;
+}
 
     </style>
 <head>
@@ -180,12 +190,16 @@ cursor: pointer;
 <div class="newuser">
     <p>new user</p>
     <a href="signup.html"><button type="submit" class="newsignup" style="text-decoration: none;">Signup</button></a>
+    <button type="submit" class="btn old" style="margin-left:78rem">Load Older messages</button>
 </div>
 <body>
    
-<div class="users" id="users">
+    <div class="container">
+        <div class="users" id="users">
 
-</div>
+        </div>
+    </div>
+
 
 <footer  class="messagebox">
    <div class="messageboxwrap">  
