@@ -40,7 +40,7 @@ const users=response.data.users;
 
 
 let i=0;
-users.forEach((user)=>{
+await users.forEach((user)=>{
    
     const li=document.createElement('li');
     const userName=document.createTextNode(`${user}  joined`);
@@ -56,6 +56,37 @@ users.forEach((user)=>{
     i++;
     users1.appendChild(li);
 })
+
+const messages=await axios.get('http://localhost:3000/getMessage');
+if(messages)
+{
+const arr=messages.data.messageArr
+await arr.forEach((m)=>{
+    const name=m.name;
+    const data=m.message
+
+    const li=document.createElement('li');
+    let text=document.createTextNode(name+" : "+data);
+    
+    li.appendChild(text);
+    if(j%2===0)
+    {
+        li.style.backgroundColor="black";
+        
+    }
+    else{
+        li.style.backgroundColor="grey"
+    }
+    j++;
+
+    
+    users1.appendChild(li);
+})
+}
+else{
+    console.log('no messages found')
+}
+
 
 
 

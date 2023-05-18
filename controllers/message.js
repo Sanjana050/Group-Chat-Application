@@ -30,3 +30,14 @@ else{
    
 
 }
+
+
+exports.getMessage=async(req,res,next)=>{
+    const messageArr=await Chat.findAll();
+    console.log(messageArr);
+    if(messageArr)
+    res.status(200).json({message:"all messages",messageArr:messageArr})
+else{
+    res.status(401).json({message:"could not retrieve messages"})
+}
+}
