@@ -189,6 +189,30 @@ cursor: pointer;
     width:100%;
     
 }
+.btnoption{
+    background-color: white;
+    color: black;
+    width: 8.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius:.5rem;
+    margin:13px;
+    cursor:pointer;
+    position: relative;
+}
+.btnoption:hover{
+    background-color: greenyellow;
+}
+.adminOptions{
+    display:grid;
+    
+    grid-template-columns:18rem 10rem;
+    margin-left:6.6rem;
+}
+.btnoption{
+    display:grid;
+    
+    grid-template-columns:8rem 2rem;
+}
 
     </style>
 <head>
@@ -208,8 +232,10 @@ cursor: pointer;
     <a href="signup.html"><button type="submit" class="newsignup" style="text-decoration: none;">Signup</button></a>
     <button type="submit" class="btn old" style="margin-left:78rem">Load Older messages</button>
 </div>
+
 <body>
    
+
     <div class="container">
         <div class="users" id="users"></div>
         <div class="messages"></div>
@@ -219,11 +245,15 @@ cursor: pointer;
 
 <button type="submit"class="btn creategrp">Exit Group</button>
 
-
-
-
-
-
+<div class="groupMembers">
+    <button type="submit" class="btn" id="grpmem">Group Members</button>
+    <div class="member">
+        <div class="memberName"></div>
+        <div class="adminOptions"></div>
+    </div>
+   
+   
+</div>
 
 
 <footer  class="messagebox">

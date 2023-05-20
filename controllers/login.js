@@ -2,12 +2,12 @@ const jwt = require('jsonwebtoken');
 const User=require('../models/user')
 const bcrypt=require('bcrypt');
 require('dotenv').config;
-const secretKey='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjEyMzQ1Njc4OTAiLCJwYXNzd29yZCI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.RetRZde-iKsRzO0G8oyCYPbIs4zV7S52ewqkbzAVjkA';
+const secretKey='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjEyMzQ1Njc4OTAiLCJwYXNzd29yZCI6IkpvaG4gRG9lIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTUxNjIzOTAyMn0.mBXGconCVT-w6vURxnV4940y_7RKWpQYplKvoJMKbFE';
 const loggedin=require('../models/login')
 const path=require('path')
-function generateToken(email,password){
+function generateToken(email,password,isAdmin){
     
-    return jwt.sign({email:email,password:password}, secretKey);
+    return jwt.sign({email:email,password:password,isAdmin:isAdmin}, secretKey);
 }
 exports.postLogin = async (req, res, next) => {
     const email = req.body.email;
@@ -27,7 +27,7 @@ exports.postLogin = async (req, res, next) => {
             console.log('incorrect pass');
             res.status(300).json({ message: 'wrong password, try again' });
           } else {
-            const token= generateToken(user.email,user.password)
+            const token= generateToken(user.email,user.password,user.isAdmin)
             loggedin.create({email:user.email,
                 password:user.password,
                 name:user.name,

@@ -18,7 +18,7 @@ const loginrouter=require('./routers/login');
 app.use(loginrouter);
 app.use(chatRoute)
 app.use(express.static(path.join(__dirname,'views')));
-
+const adminGrp=require('./models/admin')
 
 const Grpmessage=require('./models/messageTable');
 const UserGroup=require('./models/user-group');
@@ -49,6 +49,8 @@ Group.hasMany(Grpmessage);
 User.hasMany(Grpmessage);
 Grpmessage.belongsTo(User)
 
+Group.hasMany(adminGrp);
+adminGrp.hasMany(Group);
 
 sequelize.sync().then(()=>{
     app.listen(3000);

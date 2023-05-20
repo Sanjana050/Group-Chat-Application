@@ -1,6 +1,6 @@
 const jwt=require('jsonwebtoken');
 const User=require('../models/user');
-const secretKey='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjEyMzQ1Njc4OTAiLCJwYXNzd29yZCI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.RetRZde-iKsRzO0G8oyCYPbIs4zV7S52ewqkbzAVjkA';
+const secretKey='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjEyMzQ1Njc4OTAiLCJwYXNzd29yZCI6IkpvaG4gRG9lIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTUxNjIzOTAyMn0.mBXGconCVT-w6vURxnV4940y_7RKWpQYplKvoJMKbFE';
 const authenticate=async(req,res,next)=>{
     try{
 

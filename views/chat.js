@@ -303,7 +303,9 @@ postuser.push(email);
     {
         console.log('group Created', createGrp);
         
-        location.href = `./grpchat.html?name=${grpName}&grpId=${createGrp.data.grp.id}&email=${email}`;
+        console.log(createGrp.data.token);
+        localStorage.setItem(email,createGrp.data.token)
+         location.href = `./grpchat.html?name=${grpName}&grpId=${createGrp.data.grp.id}&email=${email}`;
 
         
     }
