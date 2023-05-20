@@ -2,9 +2,9 @@ const jwt = require('jsonwebtoken');
 const User=require('../models/user')
 const bcrypt=require('bcrypt');
 require('dotenv').config;
-const secretKey='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbmphbmFAZ21haWwuY29tIiwicGFzc3dvcmQiOiJKb2huIERvZSIsImlhdCI6MTUxNjIzOTAyMn0.ex8WIWs1CaF8riXrwR-TtHswUYgP3-z7pBnNtL8ROpE';
+const secretKey='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjEyMzQ1Njc4OTAiLCJwYXNzd29yZCI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.RetRZde-iKsRzO0G8oyCYPbIs4zV7S52ewqkbzAVjkA';
 const loggedin=require('../models/login')
-
+const path=require('path')
 function generateToken(email,password){
     
     return jwt.sign({email:email,password:password}, secretKey);
@@ -16,10 +16,7 @@ exports.postLogin = async (req, res, next) => {
     try {
         
 
-        const loggedinuser=await loggedin.findOne({where:{email:email}});
-        if(loggedinuser){
-           return res.status(300).json({message:"user already logged in"})
-        }
+        
 
 
 

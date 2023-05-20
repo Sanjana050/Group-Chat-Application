@@ -178,23 +178,18 @@ cursor: pointer;
 }
 .container{
     height: 300px;
-  overflow: hidden;
+  overflow: auto;
 }
-.yourgrpbtn{
-    margin-left:86rem;
-}
-.groups{
+.groupM{
     list-style: none;
-    background-color: grey;
-    color: white;
-    padding: 0.2rem;
-    margin: 0.1rem;
-    margin-left: 89rem;
-    margin-top: 1.1rem;
-    cursor: pointer;
-    display: grid;
-    grid-template-rows: repeat(3 .1rem)
+    background-color: black;
+    color:white;
+    padding:.2rem;
+    margin:.1rem;
+    width:100%;
+    
 }
+
     </style>
 <head>
     <meta charset="UTF-8">
@@ -216,37 +211,19 @@ cursor: pointer;
 <body>
    
     <div class="container">
-        <div class="users" id="users">
+        <div class="users" id="users"></div>
+        <div class="messages"></div>
 
-        </div>
     </div>
 
-<div class="group">
-<button type="submit"class="btn creategrp">Create a Group</button>
-<p class="grpName"></p>
-<p class="username"></p>
-<div class="grpNameinput" style="visibility: hidden";>
-    <label for="inputgrpName" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Enter Group Name</label>
-    <input type="text" class="inputgrpName" id="inputgrpName">
-    <button type="submit" class="btn grpbtn">Submit</button>
-</div>
 
-<div class="userList" style="visibility: hidden;">
-    <label for="userListName" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Enter User Name</label>
-    <input type="text" class="userListName" id="userListName">
-    <button type="submit" class="btn userListbtn" style="width:60px ;margin-left:1rem">Add </button>
-</div>
-<div class="userGrpList">
+<button type="submit"class="btn creategrp">Exit Group</button>
 
-</div>
-<button type="submit" class="createbtn btn" style="visibility:hidden; margin-left:.1rem">Create</button>
-</div>
-<div class="yourgrps" style="margin-right:0">
-    <button type="submit" class="btn yourgrpbtn">Your Groups</button>
-    <div class="grouplist">
-        
-    </div>
-</div>
+
+
+
+
+
 
 
 <footer  class="messagebox">
@@ -257,13 +234,13 @@ cursor: pointer;
     <i class="fas fa-paper-plane arrow"></i>
    
    </div>
-     
+      
     
 </footer>
 
    <div id="error-message" style="color:red"></div>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="chat.js"></script>
+  <script src="grpchat.js"></script>
  
 </body>
 </html>

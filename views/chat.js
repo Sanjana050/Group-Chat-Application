@@ -2,10 +2,51 @@ const users1=document.querySelector('.users');
 const urlParams = new URLSearchParams(window.location.search);
 const email=urlParams.get('message');
 const old=document.querySelector('.old');
+const createBtn=document.querySelector('.createbtn')
 
-container=document.querySelector('.container')
+
+const container=document.querySelector('.container')
+
+const grpName=document.querySelector('.grpName')
+const creategrp=document.querySelector('.creategrp');
 
 
+creategrp.addEventListener('click',()=>{creategrp.style.visibility="hidden";
+document.querySelector('.grpNameinput').style.visibility="visible"
+})
+
+
+
+function function1(e)
+    {
+    
+        console.log(document.querySelector('.inputgrpName').value);
+        document.querySelector('.userList').style.visibility="visible"
+    
+}
+
+document.querySelector('.grpbtn').addEventListener('click',function1);
+
+function function2(e){
+    const user=document.querySelector('.userListName').value;
+    console.log(user);
+    const div=document.createElement('div');
+    div.className="usersadded"
+    const userName=document.createTextNode(`${user}`);
+    div.appendChild(userName);
+    div.style.backgroundColor="grey";
+    div.style.color="white"
+    div.style.width="10rem"
+    div.style.padding=".2rem"
+    div.style.margin=".1rem"
+    document.querySelector('.userGrpList').appendChild(div);
+
+    document.querySelector('.userListName').value="";
+    document.querySelector('.createbtn').style.visibility="visible"
+
+
+}
+document.querySelector('.userListbtn').addEventListener('click',function2);
 
 let j=0;
 
@@ -239,7 +280,40 @@ else{
  
 
 }
+async function createGrp(e)
+{
+    e.preventDefault();
+    console.log("NEHA")
+    const grpName=document.querySelector('.inputgrpName').value;
+    
+    let user;
+    let postuser=[];
+    user=document.getElementsByClassName('usersadded')
+    console.log(user)
+    const u=Array.from(user)
+u.forEach((user1)=>{
+    console.log(user1.innerHTML)
+    postuser.push(user1.innerHTML)
+})
 
+console.log(postuser)
+postuser.push(email);
+    const createGrp=await axios.post('/createGrp',{grpName,postuser},{headers:{token:localStorage.getItem(email)}});
+    if(createGrp)
+    {
+        console.log('group Created', createGrp);
+        
+        location.href = `./grpchat.html?name=${grpName}&grpId=${createGrp.data.grp.id}&email=${email}`;
+
+        
+    }
+
+
+    
+
+    
+
+}
 
 function loadUI(){
     const arr=getMessageFromLS();
@@ -253,9 +327,57 @@ document.querySelector('.messagesend').addEventListener('click',sendMessage)
 window.addEventListener('DOMContentLoaded',showUsers);
 
 old.addEventListener('click',loadAllMessages);
+createBtn.addEventListener('click',createGrp);
+
+const yourgrpbtn=document.querySelector('.yourgrpbtn');
+async function showyourgroups(e)
+{
+    e.preventDefault();
+    console.log('your groups');
+    console.log(localStorage.getItem(email));
+    const group=await axios.get('/mygrps',{headers:{token:localStorage.getItem(email)}});
+    if(group)
+    {
+     const arr=group.data.groups;
+     
+     for(let i=0;i<arr.length;i++)
+     {
+        let grp=arr[i];
+        console.log(grp);
+        const li=document.createElement('button');
+        const text=document.createTextNode(`${grp.name}`)
+        li.appendChild(text);
+        li.style.listStyle="none";
+        li.id=`${grp.id}`
+    
+        li.classList.add("groups");
+        li.addEventListener('click',grpChat1);
+        document.querySelector('.grouplist').append(li);
+     }
+       
 
 
-  
-  
 
-  
+    }
+    else{
+        console.log('no grps found')
+    }
+
+
+}
+yourgrpbtn.addEventListener('click',showyourgroups);
+
+function grpChat1(e)
+{
+    e.preventDefault();
+    console.log(e.target);
+    const id=e.target.id;
+    console.log(id);
+    console.log(e);
+    const grpName=e.target.innerText;
+    console.log(grpName)
+
+
+    location.href = `./grpchat.html?name=${grpName}&grpId=${e.target.id}&email=${email}`;
+    
+}

@@ -2,6 +2,7 @@ const express=require('express');
 const app=express();
 const cors=require('cors')
 const axios=require('axios')
+const grproute=require('./routers/group');
 const bodyParser=require('body-parser');
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
@@ -17,12 +18,18 @@ const loginrouter=require('./routers/login');
 app.use(loginrouter);
 app.use(chatRoute)
 app.use(express.static(path.join(__dirname,'views')));
+
+
+const Grpmessage=require('./models/messageTable');
+const UserGroup=require('./models/user-group');
+const Group=require('./models/group')
 const Sequelize=require('sequelize');
 const sequelize=require('./util/database');
-
+app.use(grproute);
 app.use('/',(req,res)=>{
     res.sendFile(path.join(__dirname,'views','signup.html'))
 })
+
 
 User.hasMany(Login);
 Login.belongsTo(User);
@@ -31,8 +38,16 @@ Login.belongsTo(User);
 User.hasMany(Chat);
 Chat.belongsTo(User);
 
+User.belongsToMany(Group, { through: UserGroup });
+Group.belongsToMany(User, { through: UserGroup });
 
+ User.hasMany(Group);
+ Group.hasMany(User)
+Grpmessage.belongsTo(Group);
+Group.hasMany(Grpmessage);
 
+User.hasMany(Grpmessage);
+Grpmessage.belongsTo(User)
 
 
 sequelize.sync().then(()=>{

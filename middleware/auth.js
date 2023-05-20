@@ -1,11 +1,12 @@
 const jwt=require('jsonwebtoken');
 const User=require('../models/user');
-const secretKey='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbmphbmFAZ21haWwuY29tIiwicGFzc3dvcmQiOiJKb2huIERvZSIsImlhdCI6MTUxNjIzOTAyMn0.ex8WIWs1CaF8riXrwR-TtHswUYgP3-z7pBnNtL8ROpE';
+const secretKey='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjEyMzQ1Njc4OTAiLCJwYXNzd29yZCI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.RetRZde-iKsRzO0G8oyCYPbIs4zV7S52ewqkbzAVjkA';
 const authenticate=async(req,res,next)=>{
     try{
 
         console.log(req.message,"NEHA")
         const token=req.headers.token;
+        console.log(token);
         const user=jwt.verify(token,secretKey);
         const user1=await User.findOne({where:{email:user.email}});
         if(user1)
